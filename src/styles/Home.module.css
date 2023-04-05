@@ -5,11 +5,13 @@
   align-items: center;
   max-width: 900px;
   margin: 0 auto;
+  height: 100vh;
 }
 
 .header {
   font-size: 2rem;
   margin-bottom: 1.5rem;
+  color: #ffffff;
 }
 
 .pdfInput {
@@ -22,6 +24,7 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .pdfItem {
@@ -29,14 +32,21 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: #f3f3f3;
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
   border-radius: 5px;
-  padding: 0.5rem;
+  padding: 1rem;
   cursor: move;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.pdfItem:hover {
+  border-color: #0070f3;
 }
 
 .pdfName {
   flex-grow: 1;
+  color: #444444;
 }
 
 .pdfRemove button {
@@ -48,6 +58,13 @@
   height: 20px;
   font-size: 0.8rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pdfRemove button:hover {
+  background-color: #ff3333;
 }
 
 .pdfActions {
@@ -55,6 +72,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .pdfButton {
@@ -84,6 +102,8 @@
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 50%;
+  width: 100%;
   max-width: 300px;
+  color: #444444;
+  font-size: 0.9rem;
 }

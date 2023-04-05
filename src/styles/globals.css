@@ -86,3 +86,39 @@ h5,
 h6 {
   font-size: var(--font-size-heading);
 }
+
+/* Add this to your global CSS */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: #eee;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-200px);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.main-container {
+  margin-left: 200px;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sidebar-toggle:hover {
+  background-color: #0051a1;
+}
