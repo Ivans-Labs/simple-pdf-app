@@ -38,15 +38,7 @@
 
     --tile-start-rgb: 2, 13, 46;
     --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #000,
-      #000,
-      #000,
-      #000,
-      #000,
-      #000,
-      #000
-    );
+    --tile-border: conic-gradient(#000, #000, #000, #000, #000, #000, #000);
 
     --callout-rgb: 20, 20, 20;
     --callout-border-rgb: 108, 108, 108;

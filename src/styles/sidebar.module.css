@@ -1,71 +1,78 @@
 .sidebar {
-    background-color: #20232a;
-    color: white;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    z-index: 999;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(-250px);
+  background-color: #20232a;
+  color: white;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.closeSidebarButton {
+  background-color: #3b3f4a;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 20px;
+  padding: 10px;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
+  width: calc(100% - 40px);
+}
+
+.closeSidebarButton:hover {
+  background-color: #4b505a;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 0;
+  padding: 0;
+}
+
+.toolButton {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 15px 20px;
+  text-align: left;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+}
+
+.toolButton:hover {
+  background-color: #3b3f4a;
+}
+
+.toolButton.active {
+  background-color: #3b3f4a;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80vw;
+    transform: translateX(-100%);
   }
-  
-  .sidebar.open {
-    transform: translateX(0);
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .sidebar button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    display: block;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 15px 20px;
-    text-align: left;
-    transition: background-color 0.3s ease-in-out;
-    width: 100%;
-  }
-  
-  .sidebar button:hover {
-    background-color: #3b3f4a;
-  }
-  
-  .sidebar button.active {
-    background-color: #3b3f4a;
-  }
-  
-  .sidebar h2 {
-    color: #8c8c8c;
-    font-size: 16px;
-    font-weight: 500;
-    margin: 20px;
-    text-transform: uppercase;
-  }
-  
-  .sidebar-toggle {
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(0);
-  }
-  
-  .sidebar-toggle.open {
-    transform: translateX(250px);
-  }
-  
+}

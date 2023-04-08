@@ -1,24 +1,31 @@
 import React from 'react';
 import styles from '@/styles/sidebar.module.css';
+import Link from 'next/link';
 
 type SidebarProps = {
   open: boolean;
+  onClose: () => void;
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ open }) => {
+const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   return (
     <div className={`${styles.sidebar} ${open ? styles.open : ''}`}>
       <ul>
         <li>
-          <button>Tool 1</button>
+          <Link href="/pdfmerger">
+            <button className={styles.toolButton}>PDF Merger</button>
+          </Link>
         </li>
         <li>
-          <button>Tool 2</button>
+          <button className={styles.toolButton}>Tool 2</button>
         </li>
         <li>
-          <button>Tool 3</button>
+          <button className={styles.toolButton}>Tool 3</button>
         </li>
       </ul>
+      <button className={styles.closeSidebarButton} onClick={onClose}>
+        Close Sidebar
+      </button>
     </div>
   );
 };

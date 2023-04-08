@@ -1,0 +1,223 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  margin: 0 auto;
+  height: 100vh;
+  width: 100%;
+  background-color: #000000;
+}
+
+.header {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.pdfInput {
+  margin-bottom: 1.5rem;
+}
+
+.pdfList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.pdfItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: move;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.pdfItem:hover {
+  border-color: #0070f3;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+}
+
+.pdfName {
+  flex-grow: 1;
+  color: #444444;
+  font-weight: 500;
+}
+
+.pdfRemove button {
+  background-color: #ff5c5c;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  width: 24px;
+  height: 24px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.pdfRemove button:hover {
+  background-color: #ff3333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+}
+
+.pdfActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pdfButton {
+  background-color: #0070f3;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.pdfButton:hover {
+  background-color: #0051a1;
+}
+
+.pdfButtonDisabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pdfButtonDisabled:hover {
+  background-color: #ccc;
+}
+
+.pdfFilename {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+  color: #444444;
+  font-size: 0.9rem;
+}
+
+.pdfBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: moveGradient 20s ease infinite;
+  background-image: linear-gradient(
+    to right,
+    #0011ff,
+    #0070f3,
+    #00b8e6,
+    #00f0d1,
+    #8cffa9,
+    #f7ff7c,
+    #ffac7e,
+    #ff007e,
+    #730080
+  );
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Add to PDF.module.css */
+.pdfError {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background-color: #f44336;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.pdfSuccess {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .header {
+    font-size: 1.5rem;
+  }
+
+  .pdfItem {
+    padding: 0.75rem;
+  }
+
+  .pdfName {
+    font-size: 0.9rem;
+  }
+
+  .pdfRemove button {
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+  }
+
+  .pdfButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .pdfFilename {
+    padding: 0.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+.github {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.github a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.githubStars {
+  margin-left: 0.5rem;
+}
+
+.footer {
+  font-size: 16px;
+  text-align: center;
+}
