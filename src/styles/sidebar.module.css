@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: #20232a;
+  background-color: #0e3899d5;
   color: white;
   height: 100%;
   position: fixed;
@@ -12,13 +12,13 @@
 }
 
 .closeSidebarButton {
-  background-color: #3b3f4a;
+  background-color: #bd0c0cc2;
   border: none;
   color: white;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-  margin: 0 20px;
+  margin: 10px;
   padding: 10px;
   position: absolute;
   bottom: 10px;
@@ -72,7 +72,20 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    width: 80vw;
-    transform: translateX(-100%);
+    width: 100%;
+    height: auto;
+    transform: translateY(-100%);
+    overflow: hidden;
+  }
+
+  .sidebar.open {
+    transform: translateY(0%);
+  }
+
+  .closeSidebarButton {
+    margin: 0 auto;
+    position: static;
+    width: 100%;
+    bottom: 0;
   }
 }

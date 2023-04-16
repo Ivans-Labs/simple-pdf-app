@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import styles from '@/styles/PDF.module.css';
-
 import { useEffect } from 'react';
 
 const PDFMerger: React.FC = () => {
@@ -9,18 +8,6 @@ const PDFMerger: React.FC = () => {
   const [thumbnails, setThumbnails] = useState<string[]>([]);
   const [mergedPdfName, setMergedPdfName] = useState<string>('merged.pdf');
   const draggedItem = useRef<number | null>(null);
-  const [githubStars, setGithubStars] = useState<number>(0);
-  const fetchGithubStars = async () => {
-    const response = await fetch(
-      'https://api.github.com/repos/USERNAME/REPOSITORY'
-    );
-    const data = await response.json();
-    setGithubStars(data.stargazers_count);
-  };
-
-  useEffect(() => {
-    fetchGithubStars();
-  }, []);
 
   const handlePDFInputChange = async (
     e: React.ChangeEvent<HTMLInputElement>
@@ -47,6 +34,13 @@ const PDFMerger: React.FC = () => {
     setThumbnails((prevThumbnails) =>
       prevThumbnails.filter((_, i) => i !== index)
     );
+
+    // Remove visual cue by removing the highlight from the deleted PDF
+    const deletedPdf = document.getElementById(`pdf-${index}`);
+    if (deletedPdf) {
+      deletedPdf.classList.remove(styles.droppedPdf);
+      deletedPdf.classList.remove(styles.draggedPdf);
+    }
   };
 
   const handleSortPDFs = () => {
@@ -101,18 +95,28 @@ const PDFMerger: React.FC = () => {
   };
 
   const handleDragStart = (
-    e: React.DragEvent<HTMLDivElement>,
+    e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
     index: number
   ) => {
-    e.dataTransfer.setData('text/plain', ''); // Required for Firefox
-    draggedItem.current = index;
-    e.dataTransfer.effectAllowed = 'move';
+    if ('dataTransfer' in e) {
+      e.dataTransfer.setData('text/plain', ''); // Required for Firefox
+      draggedItem.current = index;
+      e.dataTransfer.effectAllowed = 'move';
 
-    // Add visual cue by highlighting the dragged PDF
-    e.currentTarget.classList.add(styles.draggedPdf);
+      // Add visual cue by highlighting the dragged PDF
+      e.currentTarget.classList.add(styles.draggedPdf);
+    } else {
+      // handle touch event
+      draggedItem.current = index;
+      // Add visual cue by highlighting the dragged PDF
+      e.currentTarget.classList.add(styles.draggedPdf);
+    }
   };
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
+  const handleDrop = (
+    e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+    index: number
+  ) => {
     e.preventDefault();
     if (draggedItem.current !== null && draggedItem.current !== index) {
       const currentDraggedItem = draggedItem.current;
@@ -138,12 +142,19 @@ const PDFMerger: React.FC = () => {
     draggedItem.current = null;
   };
 
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDragOver = (
+    e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
+  ) => {
     e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
+    if ('dataTransfer' in e) {
+      e.dataTransfer.dropEffect = 'move';
 
-    // Add visual cue by highlighting the drop target
-    e.currentTarget.classList.add(styles.dropTarget);
+      // Add visual cue by highlighting the drop target
+      e.currentTarget.classList.add(styles.dropTarget);
+    } else {
+      // handle touch event
+      e.preventDefault();
+    }
   };
 
   const showAlert = (message: string, type: 'success' | 'error' | 'info') => {
@@ -160,8 +171,8 @@ const PDFMerger: React.FC = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        {/* Add the GitHub icon and stars count */}
+      <div className={styles.container} onTouchMove={(e) => e.preventDefault()}>
+        {/* Add the GitHub icon */}
         <div className={styles.github}>
           <a
             href="https://github.com/Sudo-Ivan/simple-pdf-app"
@@ -169,7 +180,6 @@ const PDFMerger: React.FC = () => {
             rel="noopener noreferrer"
           >
             <i className="fa fa-github" aria-hidden="true"></i>
-            <span className={styles.githubStars}>{githubStars}</span>
           </a>
         </div>
 
@@ -179,7 +189,7 @@ const PDFMerger: React.FC = () => {
         <div className={styles.pdfInput}>
           <input type="file" multiple onChange={handlePDFInputChange} />
         </div>
-        <div className={styles.pdfList}>
+        <div className={styles.pdfList} onTouchMove={(e) => e.preventDefault()}>
           {pdfs &&
             pdfs.map((pdf, index) => (
               <div
@@ -187,7 +197,9 @@ const PDFMerger: React.FC = () => {
                 className={styles.pdfItem}
                 draggable
                 onDragStart={(e) => handleDragStart(e, index)}
+                onTouchStart={(e) => handleDragStart(e, index)}
                 onDrop={(e) => handleDrop(e, index)}
+                onTouchEnd={(e) => handleDrop(e, index)}
                 onDragOver={(e) => handleDragOver(e)}
               >
                 <div className={styles.pdfName}>{pdf.name}</div>
@@ -220,13 +232,13 @@ const PDFMerger: React.FC = () => {
         </div>
       </div>
       <footer className={styles.footer}>
-        Free and open-source, created by{' '}
+        Dribble Artwork by{' '}
         <a
-          href="https://github.com/Sudo-Ivan"
+          href="https://dribbble.com/shots/19117799-Bounce-in-Space-2-backgrounds"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Sudo-Ivan
+          Ivan Dubovik
         </a>
       </footer>
     </>

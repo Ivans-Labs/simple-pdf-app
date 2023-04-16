@@ -1,3 +1,9 @@
+![alt text](https://cdn.statically.io/gh/Sudo-Ivan/MyWebsite-Assets/main/images/website/pdfapphomepage.png)
+
+![alt text](https://cdn.statically.io/gh/Sudo-Ivan/MyWebsite-Assets/main/images/website/pdfmergershowcase1.png)
+
+Using dribble artwork by Ivan Dubovik
+
 # A Simple PDF App
 
 ## Overview
@@ -12,10 +18,9 @@ Please feel free to contribute, I would really appreciate it.
 
 - Merge multiple PDFs into one document
 - Drag and drop PDF files
-- Sort PDFs (borked)
 - Download merged PDF with custom filename
 
-More features are also WIP
+More features are coming!
 
 ## Technologies Used
 
@@ -25,9 +30,9 @@ More features are also WIP
 - TypeScript
 - pdf-lib
 
-## Getting Started
+## Getting Started with the Desktop App
 
-WIP
+`WIP - Not Released Yet`
 
 ## Contributing
 

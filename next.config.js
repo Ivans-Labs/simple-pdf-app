@@ -1,12 +1,26 @@
-/** @type {import('next').NextConfig} */
+// next.config.js
 
-const nextConfig = {
-  reactStrictMode: true,
-  // Note: This feature is required to use NextJS Image in SSG mode.
-  // See https://nextjs.org/docs/messages/export-image-api for different workarounds.
-  images: {
-    unoptimized: true,
+const securityHeaders = [
+  // Prevent the browser from MIME-sniffing the response.
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff',
+  },
+  // Enable cross-site scripting (XSS) protection in the browser.
+  {
+    key: 'X-XSS-Protection',
+    value: '1; mode=block',
+  },
+];
+
+module.exports = {
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ];
   },
 };
-
-module.exports = nextConfig;

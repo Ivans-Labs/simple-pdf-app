@@ -3,11 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 90%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   margin: 0 auto;
   height: 100vh;
   width: 100%;
-  background-color: #000000;
+  background-color: #00000018; /* Add this line to add horizontal padding */
 }
 
 .header {
@@ -27,13 +29,15 @@
   gap: 0.5rem;
   margin-bottom: 1.5rem;
   width: 100%;
+  max-height: 60vh; /* add this line to set a maximum height */
+  overflow-y: auto; /* add this line to add a scrollbar when content exceeds maximum height */
 }
 
 .pdfItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 250px;
   background-color: #ffffff;
   border: 1px solid #e2e2e2;
   border-radius: 10px;
@@ -41,6 +45,7 @@
   cursor: move;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.12);
   transition: box-shadow 0.2s ease-in-out;
+  touch-action: none;
 }
 
 .pdfItem:hover {
@@ -206,18 +211,13 @@
   color: #ffffff;
 }
 
-.github a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-}
-
-.githubStars {
-  margin-left: 0.5rem;
-}
-
-.footer {
-  font-size: 16px;
-  text-align: center;
+.drag-drop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
 }

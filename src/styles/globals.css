@@ -63,11 +63,10 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-image: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
+  background-image: url('https://cdn.dribbble.com/userupload/3274746/file/original-c4c6dc1fbc4277fb6159b83edc7d2ef9.png?compress=1&resize=1920x1080&vertical=center');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 h1,
@@ -96,7 +95,7 @@ h6 {
 }
 
 .main-container {
-  margin-left: 200px;
+  margin-left: 0;
 }
 
 .sidebar-toggle {

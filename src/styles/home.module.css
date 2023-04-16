@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #00021d;
+  background-color: #00021d73;
   font-family: 'Open Sans', sans-serif;
   color: #fff;
 }
@@ -10,89 +10,66 @@
 .header {
   display: flex;
   align-items: center;
-  background-color: #000c69;
   padding: 1rem;
   font-size: 2rem;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  align-self: center;
 }
 
-.toolButton {
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid transparent;
-  color: #ffffff;
-  font-size: 1.2rem;
-  margin-right: 2rem;
-  padding: 0.5rem 0;
-  cursor: pointer;
+.toolsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.toolBox {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: 350px;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
 }
 
-.toolButton:hover {
-  border-bottom: 2px solid #ffffff;
+.toolBox:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.downloadLinkIcon,
-.githubLinkIcon {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  background-color: #fff;
+.toolIcon {
+  width: 100px;
+  height: 100px;
+  background-image: url('https://cdn.statically.io/gh/Sudo-Ivan/MyWebsite-Assets/main/images/website/pdficon01.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin-left: auto;
-  margin-right: 2rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
 }
 
-.downloadLinkIcon:hover,
-.githubLinkIcon:hover {
-  transform: scale(1.1);
-}
-
-.downloadLinkIcon {
-  background-image: url('/download-icon.svg');
-}
-
-.githubLinkIcon {
-  background-image: url('/github-icon.svg');
-}
-
-.downloadAppButton {
-  background-color: #444444;
+.toolButton {
+  background-color: #b31b1b;
   border: none;
-  border-radius: 50px;
+  border-radius: 30px;
   color: white;
-  padding: 0.9rem 1.5rem;
+  padding: 1rem 2rem;
   cursor: pointer;
-  font-size: 0.9rem;
-  margin-right: 2rem;
+  font-size: 1rem;
+  margin-top: auto;
+  margin-bottom: 1rem;
   transition: background-color 0.2s ease-in-out;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
-.downloadAppButton:hover {
-  background-color: #222222;
-}
-
-.githubIcon {
-  display: block;
-  width: 5rem;
-  height: 5rem;
-  background-image: url('/github-icon.png');
-  background-size: cover;
-  margin-top: 2rem;
-  border-radius: 50%;
+  text-decoration: none;
+  font-weight: bold;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.githubIcon:hover {
-  transform: scale(1.1);
+.toolButton:hover {
+  background-color: #8d1414;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 600px) {
@@ -125,4 +102,12 @@
   list-style-position: inside;
   font-size: 1.1rem;
   text-align: center;
+}
+.githubLink {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  font-size: 50px;
+  color: #ffffff;
 }

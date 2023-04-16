@@ -12,6 +12,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     <div className={`${styles.sidebar} ${open ? styles.open : ''}`}>
       <ul>
         <li>
+          <Link href="/">
+            <button className={styles.toolButton}>Home</button>
+          </Link>
+        </li>
+        <li>
           <Link href="/pdfmerger">
             <button className={styles.toolButton}>PDF Merger</button>
           </Link>
